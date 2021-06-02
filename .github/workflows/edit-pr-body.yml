@@ -3,6 +3,7 @@ on: [pull_request]
 
 jobs:
   update-pr:
+    runs-on: ubuntu-latest
     steps:
       - name: Update PR Body
         uses: chiaretto/github-action-concat-pr-body@v1
