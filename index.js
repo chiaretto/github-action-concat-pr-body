@@ -2,7 +2,6 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 // Toolkit docs: https://github.com/actions/toolkit
-
 async function run() {
   try {
 
