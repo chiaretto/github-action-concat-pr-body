@@ -14,11 +14,16 @@ This action will concatenate a certain text, to the original body of the pull re
 ## Example usage
 
 ```
-name: Edit pull-request body
+name: Update pull-request body
 on: [pull_request]
 
-uses: chiaretto/github-action-concat-pr-body@v1
-with:
-  github-token: "${{ secrets.GITHUB_TOKEN }}"
-  message: "This pull request generated the following artifacts."
+jobs:
+  update-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update PR Body
+        uses: chiaretto/github-action-concat-pr-body@1.0.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          message: "This pull request generated the following artifacts."
 ```
