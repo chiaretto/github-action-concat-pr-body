@@ -3,7 +3,9 @@ on: [pull_request]
 
 jobs:
   update-pr:
-    uses: chiaretto/github-action-concat-pr-body@v1
-    with:
-      github-token: "${{ secrets.GITHUB_TOKEN }}"
-      message: "This pull request generated the following artifacts."
+    steps:
+      - name: Update PR Body
+        uses: chiaretto/github-action-concat-pr-body@v1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          message: "This pull request generated the following artifacts."
