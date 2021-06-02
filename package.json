@@ -19,6 +19,7 @@
   "homepage": "https://github.com/chiaretto/github-action-concat-pr-body#readme",
   "dependencies": {
     "@actions/core": "^1.2.3",
-    "@actions/github": "^2.1.1"
+    "@actions/github": "^2.1.1",
+    "@vercel/ncc": "^0.28.6"
   }
 }
