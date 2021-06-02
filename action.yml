@@ -1,0 +1,14 @@
+
+name: 'Concata a message on pull-request body'
+description: 'A github action to concat a message to  pull request original body'
+author: 'Fabiano Chiaretto Fernandes'
+runs:
+  using: 'node12'
+  main: 'index.js'
+inputs:
+  github-token:
+    description: 'The GITHUB_TOKEN secret'
+    required: true
+  message:
+    description: 'Message to concatenate'
+    required: true
