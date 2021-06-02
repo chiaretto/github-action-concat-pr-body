@@ -5,6 +5,7 @@ const github = require('@actions/github');
 
 async function run() {
   try {
+
     const inputs = {
       token: core.getInput('github-token', {required: true}),
       message: core.getInput('message', {required: true})
