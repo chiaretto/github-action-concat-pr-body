@@ -1,5 +1,5 @@
 
-name: 'Concata a message on pull-request body'
+name: 'Concat a message on pull-request body'
 description: 'A github action to concat a message to  pull request original body'
 author: 'Fabiano Chiaretto Fernandes'
 runs:
