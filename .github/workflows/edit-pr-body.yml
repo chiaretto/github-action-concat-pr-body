@@ -21,20 +21,20 @@ for your operating system, unzip and directly run the binary like the examples b
 
 - **Windows**\r
 Download the file: **[rit-windows.zip](url)**\r
-Unzip to some folder like `C:\\home\\user\\downloads\\pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
-Access the folder: `cd C:\\home\\user\\downloads\\pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Unzip to some folder like `C:\\home\\user\\downloads\\pr${{ steps.pull-request-number.outputs.pull-request-number }}`\r
+Access the folder: `cd C:\\home\\user\\downloads\\pr${{ steps.pull-request-number.outputs.pull-request-number }}`\r
 Directly call the binary: `.\\rit.exe --version` or `.\\rit.exe name of formula`\r
 \r\r
 - **Linux**\r
 Download the file: **[rit-linux.zip](url)**\r
-Unzip to some folder like /home/user/downloads/pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
-Access the folder: cd /home/user/downloads/pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Unzip to some folder like /home/user/downloads/pr${{ steps.pull-request-number.outputs.pull-request-number }}`\r
+Access the folder: cd /home/user/downloads/pr${{ steps.pull-request-number.outputs.pull-request-number }}`\r
 Directly call the binary: ./rit --version` or `./rit.exe name of formula`\r
 \r\r
 - **MacOS**\r
 Download the file: **[rit-macos.zip](url)**\r
-Unzip to some folder like: `/home/user/downloads/pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
-Access the folder: `cd /home/user/downloads/pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Unzip to some folder like: `/home/user/downloads/pr${{ steps.pull-request-number.outputs.pull-request-number }}`\r
+Access the folder: `cd /home/user/downloads/pr${{ steps.pull-request-number.outputs.pull-request-number }}`\r
 Directly call the binary: `./rit --version` or `./rit.exe name of formula`\r
           "
           replace-last-message: true
