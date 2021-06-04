@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: Pull Request Number
         run: |
-        echo $GITHUB_EVENT_PATH
-        jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"
+          echo $GITHUB_EVENT_PATH
+          jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"
 
       - name: Update PR Body
         uses: chiaretto/github-action-concat-pr-body@branch1
