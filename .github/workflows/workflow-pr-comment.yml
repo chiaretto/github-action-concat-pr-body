@@ -1,7 +1,7 @@
 name: add artifact links to pull request and related issues
 on:
   workflow_run:
-    workflows: [Pull request or push run that uploads artifacts]
+    workflows: ["Update pull-request body"]
     types: [completed]
 
 jobs:
@@ -18,3 +18,4 @@ jobs:
           suffix: Have a nice day.
           format: name
           addTo: pullandissues
+      - run: echo "TESTE WORKFLOW RUN"
