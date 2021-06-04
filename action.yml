@@ -7,7 +7,7 @@ branding:
   color: 'purple'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
 inputs:
   github-token:
     description: 'The GITHUB_TOKEN secret'
@@ -15,3 +15,6 @@ inputs:
   message:
     description: 'Message to concatenate'
     required: true
+  replace-last-message:
+    description: 'Replace the last concatenated message'
+    required: false

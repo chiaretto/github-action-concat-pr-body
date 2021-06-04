@@ -7,7 +7,8 @@ async function run() {
 
     const inputs = {
       token: core.getInput('github-token', {required: true}),
-      message: core.getInput('message', {required: true})
+      replaceLastMessage: core.getInput('replace-last-message', {required: false}),
+      message: core.getInput('message', {required: true}),
     };
 
     // Pull-request format: https://developer.github.com/v3/pulls/#response
@@ -22,8 +23,14 @@ async function run() {
     if (!body) return;
 
     const separator = "\r\r---------------------------------------------\r\r"
+    const dateTime = "\r\r> Generated at " + Date()
 
-    const newBody = body + separator + inputs.message;
+    let newBody;
+    if (inputs.replaceLastMessage) {
+      newBody = body.split(separator).shift() + separator + inputs.message + dateTime;
+    } else {
+      newBody = body + separator + inputs.message + dateTime;
+    }
 
     console.log('Concatenated description: ', newBody);
 
@@ -36,6 +43,8 @@ async function run() {
 
     const client = new github.GitHub(inputs.token);
     const response = await client.pulls.update(request);
+
+    const workflows = await client.actions.listWorkflowRunArtifacts();
 
     if (response.status !== 200) {
       core.error('There was an issue while trying to update the pull-request.');

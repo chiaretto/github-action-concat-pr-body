@@ -11,6 +11,9 @@ This action will concatenate a certain text, to the original body of the pull re
 
 **Required** 
 
+### `replace-last-message`
+
+
 ## Example usage
 
 ```
@@ -22,8 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update PR Body
-        uses: chiaretto/github-action-concat-pr-body@1.0.0
+        uses: chiaretto/github-action-concat-pr-body@1.0.3
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           message: "This pull request generated the following artifacts."
+          replace-last-message: true
 ```
