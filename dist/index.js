@@ -25562,7 +25562,7 @@ async function run() {
     if (!body) return;
 
     const separator = "\r\r---------------------------------------------\r\r"
-    const dateTime = "\r\rGenerated at " + Date()
+    const dateTime = "\r\r> Generated at " + Date()
 
     let newBody;
     if (inputs.replaceLastMessage) {
