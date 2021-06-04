@@ -6,9 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pull Request Number
-        run: |
-          echo $GITHUB_EVENT_PATH
-          jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"
+        id: pull-request-number
+        run: echo "::set-output name=pull-request-number::$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")"
 
       - name: Update PR Body
         uses: chiaretto/github-action-concat-pr-body@branch1
@@ -20,22 +19,22 @@ jobs:
 To test the health and quality of this implementation, download the respective binary
 for your operating system, unzip and directly run the binary like the examples below.
 
-- **Windows**
-Download the file: **[rit-windows.zip](url)**
-Unzip to some folder like `C:\\home\\user\\downloads\\pr367`
-Access the folder: `cd C:\\home\\user\\downloads\\pr367`
-Directly call the binary: `.\\rit.exe --version` or `.\\rit.exe name of formula`
-
-- **Linux**
-Download the file: **[rit-linux.zip](url)**
-Unzip to some folder like /home/user/downloads/pr367`
-Access the folder: cd /home/user/downloads/pr367`
-Directly call the binary: ./rit --version` or `./rit.exe name of formula`
-
-- **MacOS**
-Download the file: **[rit-macos.zip](url)**
-Unzip to some folder like: `/home/user/downloads/pr367`
-Access the folder: `cd /home/user/downloads/pr367`
-Directly call the binary: `./rit --version` or `./rit.exe name of formula`
+- **Windows**\r
+Download the file: **[rit-windows.zip](url)**\r
+Unzip to some folder like `C:\\home\\user\\downloads\\pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Access the folder: `cd C:\\home\\user\\downloads\\pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Directly call the binary: `.\\rit.exe --version` or `.\\rit.exe name of formula`\r
+\r\r
+- **Linux**\r
+Download the file: **[rit-linux.zip](url)**\r
+Unzip to some folder like /home/user/downloads/pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Access the folder: cd /home/user/downloads/pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Directly call the binary: ./rit --version` or `./rit.exe name of formula`\r
+\r\r
+- **MacOS**\r
+Download the file: **[rit-macos.zip](url)**\r
+Unzip to some folder like: `/home/user/downloads/pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Access the folder: `cd /home/user/downloads/pr${{ steps.pull-request-number.outpus.pull-request-number }}`\r
+Directly call the binary: `./rit --version` or `./rit.exe name of formula`\r
           "
           replace-last-message: true
