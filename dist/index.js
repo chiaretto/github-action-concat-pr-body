@@ -25562,12 +25562,13 @@ async function run() {
     if (!body) return;
 
     const separator = "\r\r---------------------------------------------\r\r"
+    const dateTime = "\r\rGenerated at " + Date()
 
     let newBody;
     if (inputs.replaceLastMessage) {
-      newBody = body.split(separator).shift() + separator + inputs.message;
+      newBody = body.split(separator).shift() + separator + inputs.message + dateTime;
     } else {
-      newBody = body + separator + inputs.message;
+      newBody = body + separator + inputs.message + dateTime;
     }
 
     console.log('Concatenated description: ', newBody);
