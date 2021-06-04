@@ -10,4 +10,4 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           message: "This pull request generated the following artifacts."
-          replace-last-message: false
+          replace-last-message: true
