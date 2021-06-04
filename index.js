@@ -7,7 +7,8 @@ async function run() {
 
     const inputs = {
       token: core.getInput('github-token', {required: true}),
-      message: core.getInput('message', {required: true})
+      replaceLastMessage: core.getInput('replaceLastMessage', {required: true}),
+      message: core.getInput('message', {required: true}),
     };
 
     // Pull-request format: https://developer.github.com/v3/pulls/#response
@@ -23,7 +24,12 @@ async function run() {
 
     const separator = "\r\r---------------------------------------------\r\r"
 
-    const newBody = body + separator + inputs.message;
+    let newBody;
+    if (inputs.replaceLastMessage) {
+      newBody = body.split(separator).shift() + separator + inputs.message;
+    } else {
+      newBody = body + separator + inputs.message;
+    }
 
     console.log('Concatenated description: ', newBody);
 
