@@ -15,3 +15,6 @@ inputs:
   message:
     description: 'Message to concatenate'
     required: true
+  replace-last-message:
+    description: 'Replace the last concatenated message'
+    required: false

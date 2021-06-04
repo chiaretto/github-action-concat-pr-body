@@ -7,7 +7,7 @@ async function run() {
 
     const inputs = {
       token: core.getInput('github-token', {required: true}),
-      replaceLastMessage: core.getInput('replaceLastMessage', {required: true}),
+      replaceLastMessage: core.getInput('replace-last-message', {required: false}),
       message: core.getInput('message', {required: true}),
     };
 

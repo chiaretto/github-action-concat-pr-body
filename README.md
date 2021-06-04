@@ -11,6 +11,9 @@ This action will concatenate a certain text, to the original body of the pull re
 
 **Required** 
 
+### `replace-last-message`
+
+
 ## Example usage
 
 ```
@@ -26,4 +29,5 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           message: "This pull request generated the following artifacts."
+          replace-last-message: true
 ```
