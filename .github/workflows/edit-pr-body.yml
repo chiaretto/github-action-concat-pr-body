@@ -9,6 +9,17 @@ jobs:
         id: pull-request-number
         run: echo "::set-output name=pull-request-number::$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")"
 
+      - uses: actions/checkout@v2.3.4
+      - name: Create binary from branch
+        run: |
+          touch text.txt
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: rit-linux
+          path: text.txt
+
       - name: Update PR Body
         uses: chiaretto/github-action-concat-pr-body@branch1
         with:
