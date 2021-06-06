@@ -16,6 +16,10 @@ jobs:
           echo ${{ github.context }}
           echo "---------------------------"
           echo ${{ github.context.payload }}
+          echo "---------------------------"
+          echo ${{ github.context.payload.pull_request }}
+          echo "---------------------------"
+          echo ${{ github.context.payload.pull_request.number }}
 
 #      - name: Update PR Body.
 #        uses: chiaretto/github-action-concat-pr-body@branch1
