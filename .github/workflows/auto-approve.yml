@@ -1,6 +1,5 @@
 name: Auto approve
-
-on: [pull_request_target]
+on: []
 
 jobs:
   auto-approve:

@@ -1,5 +1,5 @@
 name: Update pull-request body
-on: [pull_request]
+on: []
 
 jobs:
   update-pr:
