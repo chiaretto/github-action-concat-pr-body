@@ -8,7 +8,7 @@ jobs:
   update-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Update PR Body
+      - name: Update PR Body.
         uses: chiaretto/github-action-concat-pr-body@branch1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
