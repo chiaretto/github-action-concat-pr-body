@@ -8,9 +8,17 @@ jobs:
   update-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Update PR Body
-        uses: chiaretto/github-action-concat-pr-body@branch1
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-          message: "TESTE"
-          replace-last-message: true
+      - name: Print variables
+        run: |
+          echo ${{ github }}
+          echo "---------------------------"
+          echo ${{ github.context }}
+          echo "---------------------------"
+          echo ${{ github.context.payload }}
+
+#      - name: Update PR Body.
+#        uses: chiaretto/github-action-concat-pr-body@branch1
+#        with:
+#          github-token: "${{ secrets.GITHUB_TOKEN }}"
+#          message: "TESTE"
+#          replace-last-message: true
