@@ -1,0 +1,16 @@
+name: List Actifacts
+on:
+  workflow_run:
+    workflows: ["Update pull-request body"]
+    types: [completed]
+
+jobs:
+  update-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update PR Body
+        uses: chiaretto/github-action-concat-pr-body@branch1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          message: "TESTE"
+          replace-last-message: true
