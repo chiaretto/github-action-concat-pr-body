@@ -12,6 +12,7 @@ async function run() {
     };
 
     const client = new github.GitHub(inputs.token);
+
     let body;
     let prNumber;
 
