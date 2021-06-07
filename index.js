@@ -12,7 +12,9 @@ async function run() {
     };
 
     console.log(github)
+
     console.log(github.context)
+
     console.log(github.context.payload)
 
     // Pull-request format: https://developer.github.com/v3/pulls/#response

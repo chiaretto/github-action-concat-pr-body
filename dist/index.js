@@ -25550,9 +25550,14 @@ async function run() {
       message: core.getInput('message', {required: true}),
     };
 
-    console.log(github.context.stringify())
+    console.log(github)
+
+    console.log(github.context)
+
+    console.log(github.context.payload)
 
     // Pull-request format: https://developer.github.com/v3/pulls/#response
+
     const variables = {
       prNumber: github.context.payload.pull_request.number
     };
