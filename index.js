@@ -17,11 +17,9 @@ async function run() {
     let prNumber;
 
     if (github.context.payload.pull_request) {
-        console.log('pull_request', github.context.payload.pull_request)
         prNumber = github.context.payload.pull_request.number
         body = github.context.payload.pull_request.body;
     } else {
-        console.log('workflow_run', github.context.payload.workflow_run.pull_requests)
         prNumber = github.context.payload.workflow_run.pull_requests.shift().number
         const responsePr = await client.pulls.get({
           owner: github.context.repo.owner,
