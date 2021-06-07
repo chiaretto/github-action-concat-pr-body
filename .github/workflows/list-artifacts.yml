@@ -1,28 +1,30 @@
-name: List Actifacts
+name: List Artifacts And Edit Pull Request
 on:
   workflow_run:
-    workflows: ["Update pull-request body"]
+    workflows: ["Generate Artifacts"]
     types: [completed]
 
 jobs:
-  update-pr:
+  list-artifacts-edit-pr-body:
     runs-on: ubuntu-latest
     steps:
+      - name: List artifacts
+        id: list-artifacts
+        uses: chiaretto/github-action-list-artifacts-pr@master
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
       - name: Print variables
         run: |
-          echo "Variables github"
-          echo ${{ github }}
-          echo "---------------------------"
-          echo ${{ github.context }}
-          echo "---------------------------"
-          echo ${{ github.context.payload }}
-          echo "---------------------------"
-          echo ${{ github.context.payload.pull_request }}
-          echo "---------------------------"
-          echo ${{ github.context.payload.pull_request.number }}
-#      - name: Update PR Body.
-#        uses: chiaretto/github-action-concat-pr-body@branch1
-#        with:
-#          github-token: "${{ secrets.GITHUB_TOKEN }}"
-#          message: "TESTE"
-#          replace-last-message: true
+          echo artifact-name: ${{ steps.list-artifacts.outputs.artifact-name }}
+
+      - name: Update PR Body
+        uses: chiaretto/github-action-concat-pr-body@master
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          message: "
+### This pull request generated the following artifacts.
+
+Download artifact url: ${{ steps.list-artifacts.outputs.artifact-name }}
+"
+          replace-last-message: true
