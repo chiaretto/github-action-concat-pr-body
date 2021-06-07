@@ -11,11 +11,7 @@ async function run() {
       message: core.getInput('message', {required: true}),
     };
 
-    console.log(github)
-
-    console.log(github.context)
-
-    console.log(github.context.payload)
+    console.log(github.context.payload.workflow_run.pull_requests)
 
     // Pull-request format: https://developer.github.com/v3/pulls/#response
 
