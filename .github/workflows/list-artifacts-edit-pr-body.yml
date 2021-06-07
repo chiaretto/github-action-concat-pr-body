@@ -23,7 +23,7 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           message: "
-### This pull request generated the following artifacts.
+### This pull request generated the following artifacts
 
 Download artifact url: ${{ steps.list-artifacts.outputs.artifact-name }}
 "
