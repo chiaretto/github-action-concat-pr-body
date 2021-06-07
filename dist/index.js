@@ -25550,17 +25550,26 @@ async function run() {
       message: core.getInput('message', {required: true}),
     };
 
+    const client = new github.GitHub(inputs.token);
+    let body;
+    let prNumber;
+
     if (github.context.payload.pull_request) {
         console.log('pull_request', github.context.payload.pull_request)
         prNumber = github.context.payload.pull_request.number
+        body = github.context.payload.pull_request.body;
     } else {
         console.log('workflow_run', github.context.payload.workflow_run.pull_requests)
         prNumber = github.context.payload.workflow_run.pull_requests.shift().number
+        const responsePr = await client.pulls.get({
+          owner: github.context.repo.owner,
+          repo: github.context.repo.repo,
+          pull_number: prNumber,
+        })
+        body = responsePr.data.body
     }
 
     console.log('PR Number: ', prNumber);
-
-    const body = github.context.payload.pull_request.body;
 
     console.log('Original description: ', body);
 
@@ -25578,15 +25587,12 @@ async function run() {
 
     console.log('Concatenated description: ', newBody);
 
-    const request = {
+    const response = await client.pulls.update({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       pull_number: prNumber,
       body: newBody
-    };
-
-    const client = new github.GitHub(inputs.token);
-    const response = await client.pulls.update(request);
+    });
 
     if (response.status !== 200) {
       core.error('There was an issue while trying to update the pull-request.');
