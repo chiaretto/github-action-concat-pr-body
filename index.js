@@ -15,7 +15,10 @@ async function run() {
         prNumber = github.context.payload.pull_request.number
     } else {
         prNumber = github.context.payload.workflow_run.pull_requests.shift().number
+        console.log(github.context.payload.workflow_run.pull_requests.shift())
     }
+
+    console.log('PR Number: ', prNumber);
 
     const body = github.context.payload.pull_request.body;
 
