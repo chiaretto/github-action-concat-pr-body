@@ -14,7 +14,6 @@ async function run() {
     console.log(github.context.payload.workflow_run.pull_requests)
 
     // Pull-request format: https://developer.github.com/v3/pulls/#response
-
     const variables = {
       prNumber: github.context.payload.pull_request.number
     };
