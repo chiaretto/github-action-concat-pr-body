@@ -19,7 +19,7 @@ jobs:
           echo artifact-name: ${{ steps.list-artifacts.outputs.artifact-name }}
 
       - name: Update PR Body
-        uses: chiaretto/github-action-concat-pr-body@branch1
+        uses: chiaretto/github-action-concat-pr-body@master
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           message: "
