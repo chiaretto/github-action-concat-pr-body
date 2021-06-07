@@ -9,5 +9,5 @@ jobs:
         uses: chiaretto/github-action-concat-pr-body@master
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-          message: "### This pull request was automatically edited."
+          message: "### This pull request was automatically edited"
           replace-last-message: true
