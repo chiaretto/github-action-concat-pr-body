@@ -25550,12 +25550,11 @@ async function run() {
       message: core.getInput('message', {required: true}),
     };
 
-    console.log(github.context.payload.workflow_run.pull_requests)
-
-    // Pull-request format: https://developer.github.com/v3/pulls/#response
-    const variables = {
-      prNumber: github.context.payload.pull_request.number
-    };
+    if (github.context.payload.pull_request) {
+        prNumber = github.context.payload.pull_request.number
+    } else {
+        prNumber = github.context.payload.workflow_run.pull_requests.shift().number
+    }
 
     const body = github.context.payload.pull_request.body;
 
@@ -25578,7 +25577,7 @@ async function run() {
     const request = {
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
-      pull_number: github.context.payload.pull_request.number,
+      pull_number: prNumber,
       body: newBody
     };
 
