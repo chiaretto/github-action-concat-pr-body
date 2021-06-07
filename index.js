@@ -17,6 +17,8 @@ async function run() {
         prNumber = github.context.payload.workflow_run.pull_requests.shift().number
     }
 
+    console.log('PR Number: ', prNumber);
+
     const body = github.context.payload.pull_request.body;
 
     console.log('Original description: ', body);
