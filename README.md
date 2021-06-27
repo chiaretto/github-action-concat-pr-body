@@ -15,8 +15,6 @@ This action will concatenate a certain text, to the original body of the pull re
 
 ### `pr-number`
 
-**Required**
-
 ## Example usage
 
 ```
