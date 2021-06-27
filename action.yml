@@ -18,3 +18,6 @@ inputs:
   replace-last-message:
     description: 'Replace the last concatenated message'
     required: false
+  pr-number:
+    description: 'Force PR Number'
+    required: false
