@@ -6,7 +6,7 @@ branding:
   icon: 'edit'
   color: 'purple'
 runs:
-  using: 'node14'
+  using: 'node12'
   main: 'dist/index.js'
 inputs:
   github-token:
