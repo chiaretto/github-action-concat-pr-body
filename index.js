@@ -18,7 +18,7 @@ async function run() {
     let prNumber;
     console.log(github.context.payload)
 
-    if (prNumberForced) {
+    if (inputs.prNumberForced) {
         prNumber = inputs.prNumberForced
     } else {
         if (github && github.context && github.context.payload && github.context.payload.pull_request && github.context.payload.pull_request.number) {
