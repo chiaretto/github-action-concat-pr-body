@@ -25564,10 +25564,10 @@ async function run() {
             pull_number: prNumber,
         })
         body = responsePr.data.body
-    } else if (github?.context?.payload?.pull_request?.number) {
+    } else if (github.context.payload.pull_request && github.context.payload.pull_request.number) {
         prNumber = github.context.payload.pull_request.number
         body = github.context.payload.pull_request.body;
-    } else if (github?.context?.payload?.workflow_run?.pull_requests) {
+    } else if (github.context.payload.workflow_run.pull_requests && github.context.payload.workflow_run.pull_requests) {
         prNumber = github.context.payload.workflow_run.pull_requests.shift().number
         const responsePr = await client.pulls.get({
           owner: github.context.repo.owner,
