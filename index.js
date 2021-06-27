@@ -19,22 +19,23 @@ async function run() {
 
     if (inputs.prNumberForced) {
         prNumber = inputs.prNumberForced
-    } else {
-        if (github && github.context && github.context.payload && github.context.payload.pull_request && github.context.payload.pull_request.number) {
-            prNumber = github.context.payload.pull_request.number
-            body = github.context.payload.pull_request.body;
-        } else {
-            console.log(github.context.payload.workflow_run)
-            console.log(github.context.payload.workflow_run.pull_requests[0])
-            console.log(github.context.payload.workflow_run.pull_requests[0].number)
-            prNumber = github.context.payload.workflow_run.pull_requests.shift().number
-            const responsePr = await client.pulls.get({
-              owner: github.context.repo.owner,
-              repo: github.context.repo.repo,
-              pull_number: prNumber,
-            })
-            body = responsePr.data.body
-        }
+        const responsePr = await client.pulls.get({
+            owner: github.context.repo.owner,
+            repo: github.context.repo.repo,
+            pull_number: prNumber,
+        })
+        body = responsePr.data.body
+    } else if (github?.context?.payload?.pull_request?.number) {
+        prNumber = github.context.payload.pull_request.number
+        body = github.context.payload.pull_request.body;
+    } else if (github?.context?.payload?.workflow_run?.pull_requests) {
+        prNumber = github.context.payload.workflow_run.pull_requests.shift().number
+        const responsePr = await client.pulls.get({
+          owner: github.context.repo.owner,
+          repo: github.context.repo.repo,
+          pull_number: prNumber,
+        })
+        body = responsePr.data.body
     }
 
     console.log('PR Number: ', prNumber);
