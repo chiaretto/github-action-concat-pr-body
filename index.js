@@ -16,7 +16,6 @@ async function run() {
 
     let body;
     let prNumber;
-    console.log(github.context.payload)
 
     if (inputs.prNumberForced) {
         prNumber = inputs.prNumberForced
